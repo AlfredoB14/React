@@ -1,40 +1,41 @@
+import React, {useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Header from './components/header';
+import { Amigos } from './components/amigos';
 
-let sesion =  true;
 
-const amigos = ['Diego', 'Victor', 'Naomi', 'Leon'];
-function Header({title, color}){
-  return <h1 style={{color:color ? color : "white"}}>{title ? title : "No hay nada"}</h1>
-  
-}
+
+const lista = ['Diego', 'Victor', 'Naomi', 'Leon'];
 
 function App() {
+  const [sesion, setSesion] = useState(true);
   return (
     <div className="App">
       <header className="App-header">
+      <Header title="Mi primer proyecto en React" color='green'/>
         <img src={logo} className="App-logo" alt="logo" />
-        <Header title="Hola" color='green'/>
-        <Header title="Adios" color='purple'/>
-        <Header/>
-      </header>
+ 
 
       {sesion === true ? 
       <>
       <Header title="Bienvenido" color='red'/>
-      <ul>
-        {amigos.map((amigo, index) => {
-          return <li key={index}>{amigo}</li>
-        })}
-      </ul>
+      <Amigos amigos = {lista}/>
+      
+
+      <button onClick={()=> {setSesion(false)}}>Cerrar sesión</button>
       </>  
       :
-      <p>No has iniciado sesion...</p>
-     }
+      <>
+        <p>No has iniciado sesion...</p>
+        <button onClick={()=> {setSesion(true)}}>Iniciar sesión</button>
+      </>  
 
+
+     }
+</header>
     </div>
   );
 }
-//Componente amigos para mostrar lista
-//Componente amigo que va a ser el que muestre el texto
+
 export default App;
