@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import Header from './components/header';
 import { Amigos } from './components/amigos';
-
+import { Login } from './components/login';
 
 
 const lista = ['Diego', 'Victor', 'Naomi', 'Leon'];
@@ -19,11 +19,13 @@ function App() {
 
       {sesion === true ? 
       <>
+      <Login/>
+      <button onClick={()=> {setSesion(false)}}>Cerrar sesión</button>
       <Header title="Bienvenido" color='red'/>
       <Amigos amigos = {lista}/>
       
 
-      <button onClick={()=> {setSesion(false)}}>Cerrar sesión</button>
+
       </>  
       :
       <>
